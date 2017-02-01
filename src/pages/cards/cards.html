@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'CARDS_TITLE' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-left (click)="newCard();">
+        <ion-icon name="add" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+
+  <ion-card *ngFor="let item of cardItems" class="class-bg">
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img [src]="item.user.avatar">
+      </ion-avatar>
+      <h2>{{item.user.name}}</h2>
+    </ion-item>
+
+    <img [src]="item.image">
+
+    <ion-card-content>
+      <p>{{item.content}}</p>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button color="primary" clear small icon-left>
+            <ion-icon name='thumbs-up'></ion-icon>
+            2
+          </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="primary" clear small icon-left>
+            <ion-icon name='text'></ion-icon>
+            3
+          </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
