@@ -13,6 +13,26 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+  <ion-list no-lines>
+    <ion-item *ngFor="let message of messages">
+      <p class="messageRight">
+        {{message}}
+      </p>
+    </ion-item>
+  </ion-list>
+
+  <ion-footer>
+    <!-- <form name="myForm"> -->
+    <ion-item>
+
+        <ion-input type="text" placeholder="Message" id="chatBox" [(ngModel)]="chatBox"></ion-input>
+        <button ion-button item-right (click)="sendMessage(chatBox)"> Send </button>
+
+    </ion-item>
+    <!-- </form> -->
+
+  </ion-footer>
 
 </ion-content>

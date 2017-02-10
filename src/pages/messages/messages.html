@@ -18,6 +18,74 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content >
+
+  <ion-list>
+  <ion-item-sliding>
+    <ion-item (click)="newMessage()">
+      <ion-avatar item-left>
+        <img src="../../assets/img/speakers/bear.jpg">
+      </ion-avatar>
+      <h2>Steve Jobs</h2>
+      <p> Hey! Great to see you here.</p>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger">
+        <ion-icon name="text"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+    <ion-item-options side="left">
+      <button ion-button color="secondary">
+        <ion-icon name="call"></ion-icon>
+        Call
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <ion-item-sliding>
+    <ion-item (click)="newMessage()">
+      <ion-avatar item-left>
+        <img src="../../assets/img/speakers/turtle.jpg">
+      </ion-avatar>
+      <h2>Bill Gates</h2>
+      <p> You should check out the book "How I built Microsoft".</p>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger">
+        <ion-icon name="text"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+    <ion-item-options side="left">
+      <button ion-button color="secondary">
+        <ion-icon name="call"></ion-icon>
+        Call
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <ion-item-sliding>
+    <ion-item (click)="newMessage()">
+      <ion-avatar item-left>
+        <img src="../../assets/img/speakers/rabbit.jpg">
+      </ion-avatar>
+      <h2>Mark Zuckerberg</h2>
+      <p> Wanna watch a movie? </p>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger">
+        <ion-icon name="text"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+    <ion-item-options side="left">
+      <button ion-button color="secondary">
+        <ion-icon name="call"></ion-icon>
+        Call
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
 
 </ion-content>

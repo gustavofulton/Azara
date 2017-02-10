@@ -12,11 +12,14 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'messaging.html'
 })
 export class MessagingPage {
+  message = "";
+  messages = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MessagingPage');
+  sendMessage(message) {
+    this.messages.push(message);
   }
 
 }
