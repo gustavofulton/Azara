@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 import { Settings } from '../../providers/settings';
+import { WelcomePage } from '../welcome/welcome';
+import { App } from 'ionic-angular';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
 /**
@@ -36,7 +38,13 @@ export class SettingsPage {
               public settings: Settings,
               public formBuilder: FormBuilder,
               public navParams: NavParams,
+              private app: App,
               public translate: TranslateService) {
+  }
+
+  logoutUser() {
+    window.localStorage.setItem('graphcoolToken', null);
+    this.app.getRootNav().setRoot(WelcomePage);
   }
 
   _buildForm() {

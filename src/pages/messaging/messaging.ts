@@ -20,6 +20,7 @@ export class MessagingPage {
 
   sendMessage(message) {
     this.messages.push(message);
+    this.message="";
   }
 
 }

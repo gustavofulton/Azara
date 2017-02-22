@@ -23,6 +23,9 @@ import { CalendarPage } from '../pages/calendar/calendar';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
+import { Angular2Apollo } from 'angular2-apollo';
+import gql from 'graphql-tag';
+
 @Component({
   template: `<ion-menu [content]="content">
     <ion-header>
@@ -43,7 +46,9 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
   <ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+  rootPage: any;
+
+  currentUser = <any>{};
 
   @ViewChild(Nav) nav: Nav;
 
@@ -65,13 +70,25 @@ export class MyApp {
     { title: 'Calendar', component: CalendarPage }
   ]
 
-  constructor(translate: TranslateService, platform: Platform, settings: Settings, config: Config) {
+  constructor(translate: TranslateService, platform: Platform, settings: Settings, config: Config, private apollo: Angular2Apollo) {
     // Set the default language for translation strings, and the current language.
     translate.setDefaultLang('en');
     translate.use('en')
 
     translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {
       config.set('ios', 'backButtonText', values.BACK_BUTTON_TEXT);
+    });
+
+    this.currentUserInfo().then(({data}) => {
+      this.currentUser = data;
+      this.currentUser = this.currentUser.user;
+      if (this.currentUser == null) {
+        this.rootPage = WelcomePage;
+      } else {
+        this.rootPage = TabsPage;
+      }
+      console.log(this.currentUser);
+
     });
 
     platform.ready().then(() => {
@@ -81,6 +98,22 @@ export class MyApp {
       Splashscreen.hide();
     });
   }
+
+
+
+ currentUserInfo(){
+   return this.apollo.query({
+     query: gql`
+       query{
+         user{
+           id
+           email
+           name
+         }
+       }
+     `
+   }).toPromise();
+ }
 
   openPage(page) {
     // Reset the content nav to have just this page
